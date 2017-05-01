@@ -21,14 +21,6 @@
     			</div>
                 {% endif %}
 
-                {% if (article.format == 'video') and (article.video is defined) %}
-                <div class="post-featured-media">
-                    <span class="embed-youtube" style="text-align:center; display: block;"><iframe
-                        width="766" height="461"
-                        class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ article.video }}?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true" style="border: 0px; width: 612px; height: 368.31853785900785px;" data-origwidth="766" data-origheight="461"></iframe></span>
-                </div>
-                {% endif %}
-
                 <h2 class="post-title ">
                     <a class="fade" href="{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>
@@ -50,9 +42,9 @@
         </article>
     </div>
     {% endfor %}
-</div>
 
-{% if articles_page.has_other_pages() %}
-    {% include 'pagination.html' %}
-{% endif %}
+    {% if articles_page.has_other_pages() %}
+        {% include 'includes/pagination.html' %}
+    {% endif %}
+</div>
 {% endblock content %}

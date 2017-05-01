@@ -61,6 +61,11 @@ img {
     max-width: 100%;
     height: auto;
 }
+iframe {
+    max-width: 100%;
+    display: block;
+    margin: 1em auto;
+}
 
 /* General Layout */
 #header {
@@ -75,7 +80,9 @@ img {
 }
 
 .wrapper {
-    width: 800px;
+    /*width: 800px;*/
+    width: 94%;
+    max-width: 60em;
     margin: 0 auto;
     padding: 1em 0;
     position: relative;
@@ -324,39 +331,92 @@ a.format-bubble {
     margin: 2em auto;
 }
 
+.pagination {
+    margin-top: 1em;
+}
+.pagination ul.pure-menu-list {
+    display: block;
+    text-align: center;
+    margin-left: 12.5%;
+}
+
+
+.footer-widgets {
+    width: 33%;
+    float: left;
+}
+.footer-widgets .widget {
+    margin: 0 2.5%;
+    margin-bottom: 15px;
+    font-size: 0.875em;
+}
+.footer-widgets .widget-title {
+    font-size: 0.875em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #444;
+    line-height: 1;
+}
+
 @media screen and (max-width: 35.5em) {
-    .hidden-xl, .hidden-lg, .hidden-md, .hidden-sm {
-        visibility: hidden !important;
-        display: none !important;
-    }
+
 }
 @media screen and (max-width: 48em) {
-    .invisible-md, .invisible-lg, .invisible-xl {
-        visibility: hidden !important;
-        display: none !important;
+    .wrapper {
+        width: 100% !important;
+        margin: 0;
+    }
+    .blog-logo {
+        position: static;
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
+        background-size: 24px auto;
+        text-align: center;
+    }
+    .blog-title {
+        position: static;
+        /*display: block;*/
+        float: none;
+        text-align: center;
+        margin: 0;
+        margin-top: 1em;
+        line-height: 1;
+        font-size: 1.75em !important;
+    }
+    .blog-tagline {
+        margin: 0;
+        padding: 1em 3.5%;
+    }
+    #content .wrapper::before,
+    #content .wrapper::after {
+        display: none;
+    }
+    .post-bubble,
+    .post-inner:before,
+    .post-inner:after {
+        display: none;
+    }
+    .post-inner {
+        margin: 1em 0;
+        border-radius: 0;
     }
 
-    .post {
-        margin-left: 0;
+    .footer-widgets {
+        width: auto;
+        float: none;
+        padding: 5.5%;
+        margin: 0;
     }
-    .post:before {
-        display:none;
-    }
-    .post:after {
-        display:none;
+    .footer-widgets .widget {
+        margin: 0;
+        font-size: 0.875em;
     }
 }
 @media screen and (max-width: 64em) {
-    .invisible-lg, .invisible-xl {
-        visibility: hidden !important;
-        display: none !important;
-    }
 }
 @media screen and (max-width: 80em) {
-    .invisible-xl {
-        visibility: hidden !important;
-        display: none !important;
-    }
 }
 
 @media screen and (min-width: 35.5em) {

@@ -2,11 +2,14 @@
 <html lang="{{ DEFAULT_LANG }}">
 <head>
 {% block head %}
-    <title>{{ SITENAME }}</title>
     <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ SITENAME }}</title>
+    <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
 
     <!-- pure css -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
     <!-- Google Fonts -->
@@ -19,8 +22,8 @@
 </head>
 
 <body>
-    {% block header %}
     <header id="header">
+    {% block header %}
         <div class="wrapper">
             <a href="{{ SITEURL }}" title="{{ SITENAME }}" rel="home" class="blog-logo fade">
     			<img src="theme/images/logo.jpg" alt="{{ SITENAME }}" class="fade">
@@ -29,17 +32,70 @@
                 <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
             </h1>
         </div>
-    </header>
     {% endblock header %}
+    </header>
 
     <div id="content">
         {% block content %}
         {% endblock content %}
     </div>
 
+    <div id="footer">
     {% block footer %}
-    <div id="footer" class="pure-g">
-    </div>
+        <div class="wrapper">
+            <div class="footer-widgets">
+                <div class="widget">
+                <p>Dies ist das persönliche Blog von <a href="http://jonas-neugebauer.de">Jonas
+                    Neugebauer</a>. Folge mir auf Twitter: <a href="https://twitter.com/jneug">@jneug</a>
+                    .</p>
+                <ul class="pure-menu-list">
+                {% for name, link in SOCIAL %}
+    				<li class="pure-menu-item"><a href="{{ link }}" class="pure-menu-link">{{ name }}</a></li>
+    			{% endfor %}
+                </ul>
+                </div>
+            </div>
+            <div class="footer-widgets">
+                <div class="widget">
+                    <h3 class="widget-title">Seiten</h3>
+                    <ul class="pure-menu-list">
+                    {% for page in pages %}
+                        <li class="pure-menu-item"><a href="{{ page.url }}" class="pure-menu-link">{{ page.title|e }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3 class="widget-title">Kategorien</h3>
+                    <ul class="pure-menu-list">
+                    {% for cat, _ in categories %}
+                        <li class="pure-menu-item"><a href="{{ SITEURL }}/category/{{ cat }}" class="pure-menu-link">{{ cat|e }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-widgets">
+                {% if LINKS %}
+                <div class="widget">
+                    <h3 class="widget-title">Links</h3>
+                    <ul class="pure-menu-list">
+                    {% for text,link in LINKS %}
+                        <li class="pure-menu-item"><a href="{{ link }}" class="pure-menu-link">{{ text|e }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <div class="widget">
+                    <h3 class="widget-title">Feeds</h3>
+                    <ul class="pure-menu-list">
+                    {% if FEED_ALL_ATOM %}
+    				    <li class="pure-menu-item"><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" class="pure-menu-link">Feed: Alle Artikel</a></li>
+    				{% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
     {% endblock footer %}
+    </div>
 </body>
 </html>
