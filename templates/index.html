@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% for article in articles_page.object_list %}
+<div class="pure-g format-{{ article.format if article.format is defined else 'standard' }}">
+    <div class="pure-u-1 pure-u-md-3-24 invisible-md">&nbsp;</div>
+    <div class="pure-u-1 pure-u-md-2-24 invisible-md">
+        <div class="post-bubble">
+        	<a href="#" class="format-bubble"></a>
+        </div>
+    </div>
+    <article class="pure-u-1 pure-u-md-17-24">
+        <div class="post">
+            <header class="post-header">
+                <h2 class="post-title">
+                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+                </h2>
+
+                <p class="post-meta">
+                    <time class="published" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
+                    <address class="vcard author">By
+                    {% for author in article.authors %}
+                        <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                    {% endfor %}
+                    </address>
+                </p>
+            </header>
+
+            <div class="post-content">{{ article.summary }}</div>
+        </div>
+    </article>
+    <div class="pure-u-1 pure-u-md-2-24 invisible-md"></div>
+</div>
+{% endfor %}
+
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
+{% endblock content %}
