@@ -1,36 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
-{% for article in articles_page.object_list %}
-<div class="pure-g format-{{ article.format if article.format is defined else 'standard' }}">
-    <div class="pure-u-1 pure-u-md-3-24 invisible-md">&nbsp;</div>
-    <div class="pure-u-1 pure-u-md-2-24 invisible-md">
-        <div class="post-bubble">
-        	<a href="#" class="format-bubble"></a>
-        </div>
+<div class="wrapper">
+    <div class="blog-tagline">
+        <em>{{ SITESUBTITLE }}</em>
     </div>
-    <article class="pure-u-1 pure-u-md-17-24">
-        <div class="post">
+
+    {% for article in articles_page.object_list %}
+    <div class="post format-{{ article.format if article.format is defined else 'standard' }}">
+        <div class="post-bubble">
+        	<a href="{{ article.url }}" class="format-bubble fade"></a>
+        </div>
+
+        <article class="post-inner">
             <header class="post-header">
-                <h2 class="post-title">
-                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+                {% if article.image is defined %}
+                <div class="post-featured-media">
+    				<a href="{{ article.url }}" rel="bookmark" title="{{ article.title|striptags }}">
+    					<img src="{{ article.image }}">
+    				</a>
+    			</div>
+                {% endif %}
+
+                {% if (article.format == 'video') and (article.video is defined) %}
+                <div class="post-featured-media">
+                    <span class="embed-youtube" style="text-align:center; display: block;"><iframe
+                        width="766" height="461"
+                        class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ article.video }}?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true" style="border: 0px; width: 612px; height: 368.31853785900785px;" data-origwidth="766" data-origheight="461"></iframe></span>
+                </div>
+                {% endif %}
+
+                <h2 class="post-title ">
+                    <a class="fade" href="{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>
 
                 <p class="post-meta">
-                    <time class="published" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
-                    <address class="vcard author">By
+                    <a href="#">
+                        <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                    </a>
+                    <span class="post-meta-sep"> / </span>
+                    <span class="post-author">
                     {% for author in article.authors %}
-                        <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                        <a class="fade" href="{{ author.url }}">{{ author }}</a>
                     {% endfor %}
-                    </address>
+                    </span>
                 </p>
             </header>
 
-            <div class="post-content">{{ article.summary }}</div>
-        </div>
-    </article>
-    <div class="pure-u-1 pure-u-md-2-24 invisible-md"></div>
+            <div class="post-content">{{ article.content }}</div>
+        </article>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
 {% if articles_page.has_other_pages() %}
     {% include 'pagination.html' %}

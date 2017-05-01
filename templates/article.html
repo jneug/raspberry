@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  {% if article.description %}
+    <meta name="description" content="{{article.description}}" />
+  {% endif %}
+
+  {% for tag in article.tags %}
+    <meta name="tags" content="{{tag}}" />
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+<section class="article format-{{ article.format if article.format is defined else 'standard' }}">
+    <header class="post-header">
+        {% if article.image is defined %}
+        <div class="post-featured-media">
+            <a href="{{ article.url }}" rel="bookmark" title="{{ article.title|striptags }}">
+                <img src="{{ article.image }}">
+            </a>
+        </div>
+        {% endif %}
+
+        {% if (article.format == 'video') and (article.video is defined) %}
+        <div class="post-featured-media">
+            <span class="embed-youtube" style="text-align:center; display: block;"><iframe
+                width="766" height="461"
+                class="youtube-player" type="text/html" src="http://www.youtube.com/embed/{{ article.video }}?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true" style="border: 0px; width: 612px; height: 368.31853785900785px;" data-origwidth="766" data-origheight="461"></iframe></span>
+        </div>
+        {% endif %}
+
+        <h2 class="post-title ">
+            <a class="fade" href="{{ article.url }}" rel="bookmark"
+                title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+        </h2>
+
+        <p class="post-meta">
+            <a href="#" title="First published">
+                <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            </a>
+            <span class="post-meta-sep"> / </span>
+            {% if article.modified is defined %}
+            <a href="#" title="Last modified">
+                <time class="post-date" datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
+            </a>
+            <span class="post-meta-sep"> / </span>
+            {% endif %}
+            <span class="post-author">
+            {% for author in article.authors %}
+                <a class="fade" href="{{ author.url }}">{{ author }}</a>
+            {% endfor %}
+            </span>
+        </p>
+
+        {% import 'translations.html' as translations with context %}
+        {{ translations.translations_for(article) }}
+    </header>
+
+    <div class="post-content">
+      {{ article.content }}
+    </div><!-- /.entry-content -->
+</section>
+{% endblock %}
