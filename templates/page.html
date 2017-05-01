@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} | {{ page.title }}{% endblock title %}
+
+{% block content %}
+    <div class="page">
+        <header class="page-header">
+            {% if page.image is defined %}
+            <div class="page-featured-media">
+                <a href="{{ page.url }}" rel="bookmark" title="{{ page.title|striptags }}">
+                    <img src="{{ page.image }}">
+                </a>
+            </div>
+            {% endif %}
+
+            <h2 class="page-title ">
+                <a class="fade" href="{{ page.url }}" rel="bookmark"
+                    title="Permalink to {{ page.title|striptags }}">{{ page.title|e }}</a>
+            </h2>
+        </header>
+
+        {% import 'translations.html' as translations with context %}
+        {{ translations.translations_for(page) }}
+
+        <div class="page-content">
+            {{ page.content }}
+        </div><!-- /.entry-content -->
+    </div>
+{% endblock %}

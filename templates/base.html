@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 <head>
-{% block head %}
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{{ SITENAME }}</title>
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
     <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
 
     <!-- pure css -->
@@ -15,10 +14,12 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic%2C700italic%7CRaleway%3A600%2C500%2C400" type="text/css" media="all">
     <!-- styles -->
-    <link rel="stylesheet" href="theme/css/styles.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/styles.css">
+
+    {% block head %}
+    {% endblock head %}
 
     {% include 'includes/feeds.html' %}
-{% endblock head %}
 </head>
 
 <body>
@@ -26,7 +27,7 @@
     {% block header %}
         <div class="wrapper">
             <a href="{{ SITEURL }}" title="{{ SITENAME }}" rel="home" class="blog-logo fade">
-    			<img src="theme/images/logo.jpg" alt="{{ SITENAME }}" class="fade">
+    			<img src="{{ SITEURL }}/theme/images/logo.jpg" alt="{{ SITENAME }}" class="fade">
     		</a>
             <h1 class="blog-title">
                 <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
@@ -60,7 +61,7 @@
                     <h3 class="widget-title">Seiten</h3>
                     <ul class="pure-menu-list">
                     {% for page in pages %}
-                        <li class="pure-menu-item"><a href="{{ page.url }}" class="pure-menu-link">{{ page.title|e }}</a></li>
+                        <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ page.url }}" class="pure-menu-link">{{ page.title|e }}</a></li>
                     {% endfor %}
                     </ul>
                 </div>
