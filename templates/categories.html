@@ -3,7 +3,7 @@
 {% block page_title %}Kategorien{% endblock page_title %}
 
 {% block page_content %}
-<div class="pure-menu pure-menu-vertical">
+<div class="pure-menu pure-menu-floating">
     <ul class="pure-menu-list">
     {% for category, articles in categories %}
         <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ category.url }}"

@@ -3,7 +3,7 @@
 {% block page_title %}Tags{% endblock page_title %}
 
 {% block page_content %}
-<div class="pure-menu pure-menu-vertical">
+<div class="pure-menu pure-menu-floating">
     <ul class="pure-menu-list">
     {% for tag, articles in tags|sort %}
         <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ tag.url }}"

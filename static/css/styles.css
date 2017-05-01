@@ -67,6 +67,16 @@ iframe {
     margin: 1em auto;
 }
 
+.pure-menu.pure-menu-floating {
+    display: inline-block;
+}
+.pure-menu.pure-menu-floating .pure-menu-item {
+    float: left;
+}
+a.pure-menu-link:hover {
+    text-decoration: none;
+}
+
 /* General Layout */
 #header {
     background-color: #218cb9;
