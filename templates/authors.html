@@ -1,0 +1,14 @@
+{% extends "fullwidth.html" %}
+
+{% block page_title %}Autoren{% endblock page_title %}
+
+{% block page_content %}
+<div class="pure-menu pure-menu-vertical">
+    <ul class="pure-menu-list">
+    {% for author, articles in authors|sort %}
+        <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ author.url }}"
+            class="pure-menu-link">{{ author|e }} ({{ articles|count }})</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock page_content %}

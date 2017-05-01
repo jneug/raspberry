@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        {% if page is defined and page.image is defined %}
+        <div class="page-featured-media">
+            <a href="{{ page.url }}" rel="bookmark" title="{{ page.title|striptags }}">
+                <img src="{{ page.image }}">
+            </a>
+        </div>
+        {% endif %}
+
+        <h2 class="page-title ">
+            {% block page_title %}
+            {% endblock page_title %}
+        </h2>
+    </header>
+
+    <div class="page-content">
+        {% block page_content %}
+        {% endblock page_content %}
+    </div>
+</div>
+{% endblock %}

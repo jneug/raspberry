@@ -1,0 +1,12 @@
+{% extends "fullwidth.html" %}
+
+{% block page_title %}Archiv für {{ period | reverse | join(' ') }}{% endblock page_title %}
+
+{% block page_content %}
+<dl>
+{% for article in dates %}
+    <dt>{{ article.locale_date }}</dt>
+    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+{% endfor %}
+</dl>
+{% endblock page_content %}

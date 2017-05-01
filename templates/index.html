@@ -2,7 +2,7 @@
 {% block content %}
 <div class="wrapper">
     <div class="blog-tagline">
-        <em>{{ SITESUBTITLE }}</em>
+        {% block content_title %}<em>{{ SITESUBTITLE }}</em>{% endblock content_title %}
     </div>
 
     {% for article in articles_page.object_list %}

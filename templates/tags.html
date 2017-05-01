@@ -1,0 +1,14 @@
+{% extends "fullwidth.html" %}
+
+{% block page_title %}Tags{% endblock page_title %}
+
+{% block page_content %}
+<div class="pure-menu pure-menu-vertical">
+    <ul class="pure-menu-list">
+    {% for tag, articles in tags|sort %}
+        <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ tag.url }}"
+            class="pure-menu-link">{{ tag }} ({{ articles|count }})</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock page_content %}

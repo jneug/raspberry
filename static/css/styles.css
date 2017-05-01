@@ -245,7 +245,8 @@ a.format-bubble {
     top: 48px;
     left: -20px;
 }
-.format-link .post-inner {
+.format-link .post-inner,
+section.format-link {
     background-color: #2D3642;
 }
 .format-link .post-inner::after {
