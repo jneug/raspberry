@@ -350,6 +350,21 @@ section.format-link {
     margin: 0 5px;
     color: #DDD;
 }
+.post-meta2 {
+    margin-top: 2em;
+    color: #888;
+    font-size: 0.925em;
+}
+.post-meta2 span {
+    display: inline-block;
+    line-height: 120%;
+}
+.post-category {
+    margin-right: 2em;
+}
+.post-category,
+.post-tags {
+}
 
 .pagination {
     margin-top: 1em;

@@ -36,6 +36,10 @@
                         <a class="fade" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
                     {% endfor %}
                     </span>
+                    <span class="post-meta-sep"> / </span>
+                    <span class="post-category">
+                        <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
+                    </span>
                 </p>
             </header>
 

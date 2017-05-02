@@ -42,6 +42,10 @@
                     <a class="fade" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
                 {% endfor %}
                 </span>
+                <span class="post-meta-sep"> / </span>
+                <span class="post-category">
+                    <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
+                </span>
             </p>
 
             {% import 'translations.html' as translations with context %}
@@ -51,6 +55,18 @@
         <div class="post-content">
           {{ article.content }}
         </div><!-- /.entry-content -->
+
+        <div class="post-meta2">
+			<span class="post-category">Kategorie:
+                <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
+            </span>
+
+			<span class="post-tags">Tags:
+                {% for tag in article.tags|sort %}
+                    <a href="{{ SITEURL }}/{{ tag.url }}" rel="tag">{{ tag.name|e }}</a>{% if not loop.last %},{% endif %}
+                {% endfor %}
+            </span>
+		</div>
     </div>
 </section>
 {% endblock %}
