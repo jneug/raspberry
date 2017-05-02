@@ -84,6 +84,36 @@ img {
     max-width: 100%;
     height: auto;
 }
+img.img-center {
+    display: block;
+    margin: 0 auto;
+    float: none;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+img.img-right {
+    float: right;
+    margin: 0.5em;
+    margin-right: 0;
+}
+img.img-left {
+    float: right;
+    margin: 0.5em;
+    margin-left: 0;
+}
+img.img-sm {
+    max-width: 33%;
+}
+img.img-md {
+    max-width: 50%;
+}
+img.img-lg {
+    max-width: 66%;
+}
+img.img-xl {
+    max-width: 100%;
+}
+
 iframe {
     max-width: 100%;
     display: block;
