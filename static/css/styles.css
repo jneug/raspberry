@@ -92,7 +92,7 @@ a.pure-menu-link:hover {
 .wrapper {
     /*width: 800px;*/
     width: 94%;
-    max-width: 60em;
+    max-width: 50em;
     margin: 0 auto;
     padding: 1em 0;
     position: relative;
@@ -101,7 +101,7 @@ a.pure-menu-link:hover {
 .page {
     /*width: 800px;*/
     width: 94%;
-    max-width: 60em;
+    max-width: 50em;
     margin: 2em auto;
     padding: 0;
     position: relative;
