@@ -69,7 +69,7 @@
                     <h3 class="widget-title">Kategorien</h3>
                     <ul class="pure-menu-list">
                     {% for cat, _ in categories %}
-                        <li class="pure-menu-item"><a href="{{ SITEURL }}/category/{{ cat }}" class="pure-menu-link">{{ cat|e }}</a></li>
+                        <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ cat.url }}" class="pure-menu-link">{{ cat.name|e }}</a></li>
                     {% endfor %}
                     </ul>
                 </div>
