@@ -39,6 +39,29 @@ body a:hover {
 
 body p {
     text-align: justify;
+    line-height: 170%;
+}
+
+body li {
+    margin-bottom: 0.5em;
+    line-height: 170%;
+}
+
+body blockquote {
+    line-height: 170%;
+    font-size: 1.1em;
+    padding: 1em;
+    background: #f6f6f6;
+    color: #666;
+    margin: 0;
+    border-radius: 4px;
+}
+
+body blockquote p:first-child {
+    margin-top: 0;
+}
+body blockquote p:last-child {
+    margin-bottom: 0;
 }
 
 .hidden {
@@ -294,6 +317,9 @@ section.format-link {
 .format-link .post-content blockquote cite {
     color: #FFF;
 }
+.format-link .post-content blockquote {
+    background: #414954;
+}
 
 .post-header {
     padding-bottom: 1em;
@@ -316,7 +342,6 @@ section.format-link {
 }
 
 .post-content p {
-    line-height: 170%;
     margin-bottom: 1.1em;
 }
 .post-content p:last-child {
