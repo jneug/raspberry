@@ -452,7 +452,7 @@ section.format-link {
     .footer-widgets {
         width: auto;
         float: none;
-        padding: 5.5%;
+        padding: 0 5.5%;
         margin: 0;
     }
     .footer-widgets .widget {
