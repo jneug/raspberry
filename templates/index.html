@@ -15,17 +15,29 @@
             <header class="post-header">
                 {% if article.image is defined %}
                 <div class="post-featured-media">
+                    {% if (article.format is defined) and (article.format == 'link') and (article.link is defined) %}
+                    <a href="{{ article.link }}" title="External link" class="external">
+                        <img src="{{ SITEURL }}/{{ article.image }}">
+                    </a>
+                    {% else %}
     				<a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="{{ article.title|striptags }}">
     					<img src="{{ SITEURL }}/{{ article.image }}">
     				</a>
+                    {% endif %}
     			</div>
                 {% endif %}
 
                 <h2 class="post-title ">
+                    {% if (article.format is defined) and (article.format == 'link') and (article.link is defined) %}
+                    <a class="fade" href="{{ article.link }}"
+                        title="External link" class="external">{{ article.title|e }}</a>
+                    {% else %}
                     <a class="fade" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
                         title="Permalink to {{ article.title|striptags }}">{{ article.title|e }}</a>
+                    {% endif %}
                 </h2>
 
+                {% if (article.format is not defined) or (article.format != 'link') %}
                 <p class="post-meta">
                     <a href="#">
                         <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
@@ -41,6 +53,7 @@
                         <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
                     </span>
                 </p>
+                {% endif %}
             </header>
 
             <div class="post-content">{{ article.content }}</div>
