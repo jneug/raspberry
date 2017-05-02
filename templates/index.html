@@ -39,17 +39,19 @@
 
                 {% if (article.format is not defined) or (article.format != 'link') %}
                 <p class="post-meta">
-                    <a href="#">
-                        <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-                    </a>
+                    <span class="lsf-icon" title="calendar">
+                        <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="First published">
+                            <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                        </a>
+                    </span>
                     <span class="post-meta-sep"> / </span>
-                    <span class="post-author">
+                    <span class="post-author lsf-icon" title="user">
                     {% for author in article.authors %}
                         <a class="fade" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
                     {% endfor %}
                     </span>
                     <span class="post-meta-sep"> / </span>
-                    <span class="post-category">
+                    <span class="post-category lsf-icon" title="category">
                         <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
                     </span>
                 </p>

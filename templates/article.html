@@ -38,23 +38,27 @@
             </h2>
 
             <p class="post-meta">
-                <a href="#" title="First published">
-                    <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-                </a>
+                <span class="lsf-icon" title="calendar">
+                    <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="First published">
+                        <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                    </a>
+                </span>
                 <span class="post-meta-sep"> / </span>
                 {% if article.modified is defined %}
-                <a href="#" title="Last modified">
-                    <time class="post-date" datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
-                </a>
+                <span class="lsf-icon" title="time">
+                    <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="Last modified">
+                        <time class="post-date" datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
+                    </a>
+                </span>
                 <span class="post-meta-sep"> / </span>
                 {% endif %}
-                <span class="post-author">
+                <span class="post-author lsf-icon" title="user">
                 {% for author in article.authors %}
                     <a class="fade" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
                 {% endfor %}
                 </span>
                 <span class="post-meta-sep"> / </span>
-                <span class="post-category">
+                <span class="post-category lsf-icon" title="category">
                     <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
                 </span>
             </p>
@@ -68,11 +72,11 @@
         </div><!-- /.entry-content -->
 
         <div class="post-meta2">
-			<span class="post-category">Kategorie:
+			<span class="post-category lsf-icon" title="category">Kategorie:
                 <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
             </span>
 
-			<span class="post-tags">Tags:
+			<span class="post-tags lsf-icon" title="tag">Tags:
                 {% for tag in article.tags|sort %}
                     <a href="{{ SITEURL }}/{{ tag.url }}" rel="tag">{{ tag.name|e }}</a>{% if not loop.last %},{% endif %}
                 {% else %}
