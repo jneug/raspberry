@@ -8,21 +8,22 @@
     {% for article in articles_page.object_list %}
     <div class="post format-{{ article.format if article.format is defined else 'standard' }}">
         <div class="post-bubble">
-        	<a href="{{ article.url }}" class="format-bubble fade"></a>
+        	<a href="{{ SITEURL }}/{{ article.url }}" class="format-bubble fade"></a>
         </div>
 
         <article class="post-inner">
             <header class="post-header">
                 {% if article.image is defined %}
                 <div class="post-featured-media">
-    				<a href="{{ article.url }}" rel="bookmark" title="{{ article.title|striptags }}">
-    					<img src="{{ article.image }}">
+    				<a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="{{ article.title|striptags }}">
+    					<img src="{{ SITEURL }}/{{ article.image }}">
     				</a>
     			</div>
                 {% endif %}
 
                 <h2 class="post-title ">
-                    <a class="fade" href="{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+                    <a class="fade" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                        title="Permalink to {{ article.title|striptags }}">{{ article.title|e }}</a>
                 </h2>
 
                 <p class="post-meta">
@@ -32,7 +33,7 @@
                     <span class="post-meta-sep"> / </span>
                     <span class="post-author">
                     {% for author in article.authors %}
-                        <a class="fade" href="{{ author.url }}">{{ author }}</a>
+                        <a class="fade" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
                     {% endfor %}
                     </span>
                 </p>
