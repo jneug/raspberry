@@ -3,7 +3,7 @@
 {% block title %}{{ SITENAME }} | {{ page.title }}{% endblock title %}
 
 {% block page_title %}
-<a class="fade" href="{{ page.url }}" rel="bookmark"
+<a class="fade" href="{{ SITEURL }}/{{ page.url }}" rel="bookmark"
     title="Permalink to {{ page.title|striptags }}">{{ page.title|e }}</a>
 {% endblock page_title %}
 

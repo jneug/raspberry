@@ -97,6 +97,24 @@ a.pure-menu-link:hover {
     padding: 1em 0;
     position: relative;
 }
+.article,
+.page {
+    /*width: 800px;*/
+    width: 94%;
+    max-width: 60em;
+    margin: 2em auto;
+    padding: 0;
+    position: relative;
+
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.page-inner,
+.article-inner {
+    padding: 4.4%;
+    position: relative;
+}
 
 /* Header elements */
 #header .wrapper {
@@ -218,7 +236,7 @@ a.format-bubble {
 .format-image a.format-bubble{
     background-image: url(../images/formats/image.png);
 }
-.format-quote a.format-bubble{
+.format-quote a.format-bubble {
     background-image: url(../images/formats/quote.png);
 }
 .format-status a.format-bubble{
@@ -311,7 +329,8 @@ section.format-link {
 .post-featured-media img {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    margin: 0
+    margin: 0 auto;
+    display: block;
 }
 
 .post-meta {
@@ -330,16 +349,6 @@ section.format-link {
 .post-meta-sep {
     margin: 0 5px;
     color: #DDD;
-}
-
-.article, .page {
-    background-color: #ffffff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    padding: 5.5%;
-    position: relative;
-    width: 800px;
-    margin: 2em auto;
 }
 
 .pagination {
@@ -412,6 +421,17 @@ section.format-link {
     .post-inner {
         margin: 1em 0;
         border-radius: 0;
+    }
+    /* Single page layouts */
+    .article,
+    .page {
+        width: 100% !important;
+        margin: 0;
+        border-radius: 0;
+    }
+    .page-inner,
+    .article-inner {
+        margin: 1em 0;
     }
 
     .footer-widgets {
