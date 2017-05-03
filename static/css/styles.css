@@ -157,6 +157,10 @@ a.pure-menu-link:hover {
 }
 
 /* General Layout */
+#menu {
+    background-color: #2D3642;
+}
+
 #header {
     background-color: #B3446C;
 }
@@ -193,6 +197,21 @@ a.pure-menu-link:hover {
 .article-inner {
     padding: 4.4%;
     position: relative;
+}
+
+/* Main menu */
+#menu .pure-menu a {
+    color: #f1f1f1;
+}
+#menu .pure-menu-children {
+    background-color: #2D3642;
+    z-index: 5;
+}
+#menu .pure-menu a:hover {
+    color: #B3446C;
+}
+#menu .wrapper {
+    padding: 0;
 }
 
 /* Header elements */

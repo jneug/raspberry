@@ -25,7 +25,8 @@
     .format-quote .post-title a,
     .format-quote .post-title a:hover,
     .post-title a:hover,
-    .post-meta a:hover {
+    .post-meta a:hover,
+    #menu .pure-menu a:hover {
         color: {{ RBERRY_COLOR_MAIN }};
     }
     #header,
@@ -42,6 +43,50 @@
 </head>
 
 <body>
+    {% if MENUITEMS or DISPLAY_PAGES_ON_MENU or DISPLAY_CATEGORIES_ON_MENU %}
+    <div id="menu">
+        <nav class="wrapper pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+            {% for link in MENUITEMS %}
+                {% if link|count == 3 %}
+                <li class="pure-menu-item"><a href="{{ link[1] }}" class="pure-menu-link lsf-icon" title="{{ link[2] }}">{{ link[0]|e }}</a></li>
+                {% else %}
+                <li class="pure-menu-item"><a href="{{ link[1] }}" class="pure-menu-link">{{ link[0]|e }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if DISPLAY_PAGES_ON_MENU %}
+                {% if RBERRY_MENU_DROPDOWNS -%}
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">    
+                    <a href="#" class="pure-menu-link">Seiten</a>
+                    <ul class="pure-menu-children">
+                {%- endif %}
+                    {% for page in pages %}
+                        <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ page.url }}" class="pure-menu-link lsf-icon" title="{{ page.symbol if page.symbol else '' }}">{{ page.title|e }}</a></li>
+                    {% endfor %}
+                {% if RBERRY_MENU_DROPDOWNS -%}
+                    </ul>
+                </li>
+                {%- endif %}
+            {% endif %}
+            {% if DISPLAY_CATEGORIES_ON_MENU %}
+                {% if RBERRY_MENU_DROPDOWNS -%}
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">    
+                    <a href="#" class="pure-menu-link">Seiten</a>
+                    <ul class="pure-menu-children">
+                {%- endif %}
+                    {% for cat, _ in categories %}
+                        <li class="pure-menu-item"><a href="{{ SITEURL }}/{{ cat.url }}" class="pure-menu-link lsf-icon" title="category">{{ cat.name|e }}</a></li>
+                    {% endfor %}
+                {% if RBERRY_MENU_DROPDOWNS -%}
+                    </ul>
+                </li>
+                {%- endif %}
+            {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+    
     <header id="header">
     {% block header %}
         <div class="wrapper">
@@ -68,11 +113,17 @@
                 <p>Dies ist das persönliche Blog von <a href="http://jonas-neugebauer.de">Jonas
                     Neugebauer</a>. Folge mir auf Twitter: <a href="https://twitter.com/jneug">@jneug</a>
                     .</p>
+                {% if SOCIAL %}
                 <ul class="pure-menu-list">
-                {% for name,link,sym in SOCIAL %}
-    				<li class="pure-menu-item"><a href="{{ link }}" class="pure-menu-link lsf-icon" title="{{ sym }}">{{ name }}</a></li>
+                {% for link in SOCIAL %}
+                    {% if link|count == 3 %}
+    				<li class="pure-menu-item"><a href="{{ link[1] }}" class="pure-menu-link lsf-icon" title="{{ link[2] }}">{{ link[0]|e }}</a></li>
+                    {% else %}
+    				<li class="pure-menu-item"><a href="{{ link[1] }}" class="pure-menu-link">{{ link[0]|e }}</a></li>
+                    {% endif %}
     			{% endfor %}
                 </ul>
+                {% endif %}
                 </div>
             {% endblock footer_widgets_1 %}
             </div>
@@ -82,8 +133,12 @@
                 <div class="widget">
                     <h3 class="widget-title">Links</h3>
                     <ul class="pure-menu-list">
-                    {% for text,link in LINKS %}
-                        <li class="pure-menu-item"><a href="{{ link }}" class="pure-menu-link">{{ text|e }}</a></li>
+                    {% for link in LINKS %}
+                        {% if link|count == 3 %}
+                        <li class="pure-menu-item"><a href="{{ link[1] }}" class="pure-menu-link lsf-icon" title="{{ link[2] }}">{{ link[0]|e }}</a></li>
+                        {% else %}
+                        <li class="pure-menu-item"><a href="{{ link[1] }}" class="pure-menu-link">{{ link[0]|e }}</a></li>
+                        {% endif %}
                     {% endfor %}
                     </ul>
                 </div>
