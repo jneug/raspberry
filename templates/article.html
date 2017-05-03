@@ -39,14 +39,14 @@
 
             <p class="post-meta">
                 <span class="lsf-icon" title="calendar">
-                    <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="First published">
+                    <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="Ver&ouml;ffentlichung">
                         <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
                     </a>
                 </span>
                 <span class="post-meta-sep"> / </span>
                 {% if article.modified is defined %}
                 <span class="lsf-icon" title="time">
-                    <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="Last modified">
+                    <a href="{{SITEURL}}/archives/{{ article.date.strftime('%Y') }}" title="Letzte &Auml;nderung">
                         <time class="post-date" datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
                     </a>
                 </span>
@@ -54,12 +54,14 @@
                 {% endif %}
                 <span class="post-author lsf-icon" title="user">
                 {% for author in article.authors %}
-                    <a class="fade" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                    <a class="fade" href="{{ SITEURL }}/{{ author.url }}"
+                         title="Autor: {{ author|striptags }}">{{ author|e }}</a>
                 {% endfor %}
                 </span>
                 <span class="post-meta-sep"> / </span>
                 <span class="post-category lsf-icon" title="category">
-                    <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag">{{ article.category.name|e }}</a>
+                    <a href="{{ SITEURL }}/{{ article.category.url }}" rel="category tag"
+                        title="Kategorie: {{ article.category.name|striptags }}">{{ article.category.name|e }}</a>
                 </span>
             </p>
 
